@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_room_alien_rooms",
+  "info": {
+    "displayName": "alien room",
+    "icon": "alien"
+  },
+  "options": {},
+  "attributes": {
+    "description": {
+      "type": "blocks"
+    }
+  }
+}
