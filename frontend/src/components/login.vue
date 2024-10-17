@@ -1,13 +1,16 @@
 <script >
 
 
+export default {
+	name: 'Login',
+	data() {
+		return {
+			email: '',
+			password: '',
+		}
+	},
 
 </script>
 
 
 
-<template>
-	<h1>
-		login
-	</h1>
-</template>
