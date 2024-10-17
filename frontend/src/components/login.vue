@@ -15,11 +15,11 @@
 
 				<form @submit.prevent="handleSubmit">
 					<label for="Email">
-						<input type="Email" name="Email" id="Email" v-model="email" placeholder="Email">
+						<input type="Email" name="Email" id="Email" v-model="email" placeholder="Email" required>
 					</label>
 
 					<label for="Password">
-						<input type="Password" name="Password" id="Password" v-model="password" placeholder="Password">
+						<input type="Password" name="Password" id="Password" v-model="password" placeholder="Password" required>
 					</label>
 
 
@@ -72,10 +72,9 @@ export default {
 			
 			if(response.status == 201){
 				this.$router.push('/profile')
-				console.log(response.token);
+				console.log(response);
 			} else{
-				console.log('not good');
-				
+				console.warn('not good');
 			}
 
 		}

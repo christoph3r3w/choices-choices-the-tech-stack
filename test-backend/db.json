@@ -28,14 +28,14 @@
   },
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "email": "user@example.com",
       "password": "password123"
     },
     {
       "email": "12345@34567",
       "password": "qwertyu",
-      "id": 2
+      "id": "2"
     },
     {
       "email": "chris@123",
