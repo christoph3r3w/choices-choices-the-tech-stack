@@ -1,5 +1,4 @@
-
-<template>
+  <template>
 
   <div class="body">
     <Header class="header" />
