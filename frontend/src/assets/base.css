@@ -90,6 +90,7 @@ h1, a {
   box-sizing: border-box;
   margin: 0;
   font-weight: normal;
+  interpolate-size: allow-keywords;
 }
 
 body {
