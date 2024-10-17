@@ -1,13 +1,19 @@
 <script setup>
+
+import login from './components/login.vue'
 </script>
 
-<template>
+  <template>
 
-<h1>
-  hello world
-</h1>
-  
-</template>
+    <section>
+
+      <login/>
+       <a href="/profile">profile</a>
+    
+    </section>
+
+    
+  </template>
 
 <style scoped>
 
