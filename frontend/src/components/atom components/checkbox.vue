@@ -6,6 +6,6 @@
 
 <script>
 	export default {
-		name:checkbox,
+		name:Checkbox,
 	}
 </script>
