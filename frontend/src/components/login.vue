@@ -34,7 +34,7 @@
 				
 				/> -->
 
-					<button>sign-in</button>
+					<button class="nextPage">sign-in</button>
 
 				</form>
 				<a href="https://apply.deloitte.com/careers/ResetPassword/?">forgot my Password</a>
@@ -87,9 +87,9 @@ export default {
 
 <style scoped>
 .login {
-	background-color: rgba(129, 129, 129, 0.238);
+	/* background-color: rgba(129, 129, 129, 0.238); */
 
-	height: 100%;
+	/* height: 100%; */
 
 	position: relative;
 	margin: .3rem;
