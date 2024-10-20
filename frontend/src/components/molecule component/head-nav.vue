@@ -2,7 +2,9 @@
 	<section>
 		<nav v-if="isProfilePage">
 			<span class="logo">
-				<a href="javascript:void(0)" @click.prevent="reloadPage">logo</a>
+				<a href="javascript:void(0)" @click.prevent="reloadPage">
+					<img src="@/assets/Deloitte.svg" >
+				</a>
 			</span>
 			<span class="spacer"> </span>
 			<span class="end">
@@ -15,7 +17,10 @@
 		</nav>
 		<nav v-else>
 			<span class="logo">
-				<a href="javascript:void(0)" @click.prevent="reloadPage">logo</a>
+				<a href="javascript:void(0)" @click.prevent="reloadPage">
+					<img src="@/assets/Deloitte.svg" >
+
+				</a>
 			</span>
 			<span class="spacer"> </span>
 			<span class="end">mode</span>
@@ -24,8 +29,12 @@
 </template>
 
 <script>
+import Logo from '@/assets/Deloitte.svg?component';
 export default {
 	name: "header",
+	components:{
+		Logo,
+	},
 	data() {
 		return {
 			isProfilePage: false,
@@ -73,10 +82,19 @@ span {
 
 .logo {
 	flex: 1 0 20%;
+	position: relative;
 }
 
 .logo a {
 	color: var(--D-t-support);
+	position: relative;
+	height: 100%;
+}
+
+.logo a img{
+	width: 7rem;
+	/* mix-blend-mode: difference; */
+
 }
 
 .spacer {
