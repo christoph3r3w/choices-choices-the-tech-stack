@@ -6,6 +6,10 @@
 				<router-link to="/wizard">wizardt</router-link>
 			</div>
 
+			<div class="window " id="overview">
+				<Overview class= "window window-overview" />
+			</div>
+	
 		</Window>
 </template>
 
