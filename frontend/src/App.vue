@@ -31,21 +31,29 @@
 
 <style>
 
+*{
+  --hf-height:5vh;
+  --body-color: color(display-p3 0.9494 0.9152 0.886);
+  --body-color2:color(display-p3 0.9494 0.9152 0.886 / 0.9);
+}
 .body{
   min-height: 100vh;
   position: relative;
   /* color: white ; */
   display: flex;
   flex-direction: column;
-  background-color: color(display-p3 0.9494 0.9152 0.886) ;
-
+  background-color: var(--body-color);
 }
 
 .header,.footer{
   color: var(--LD-text,white);
   padding-inline: 2.5%;
-  flex:0 1 5vh;
+  flex:0 1 var(--hf-height);
 }
+
+/* .header{
+  outline: .001rem solid;
+} */
 
 .footer{
   background-color: black;
@@ -58,7 +66,8 @@
 }
 
 .content{
-  flex: 1;
+  flex: 1 0 100%;
+  margin-top: var(--hf-height) ;
 
 }
 
