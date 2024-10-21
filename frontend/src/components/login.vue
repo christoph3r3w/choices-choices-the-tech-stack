@@ -93,6 +93,8 @@ export default {
 
 	position: relative;
 	margin: .3rem;
+	margin-top: calc(var(--hf-height) + 3rem);
+
 	padding: 1.5rem;
 	padding-inline: 3rem;
 	flex-direction: column;
@@ -233,7 +235,7 @@ export default {
 	}
 
 	& input:focus-visible {
-		outline: solid var(--D-mid-bk);
+		outline: 2px solid var(--D-mid-bk);
 		outline-style: dashed;
 		outline-offset: 10px;
 		border-radius: 1pc;
