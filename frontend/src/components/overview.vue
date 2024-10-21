@@ -6,12 +6,12 @@
 	:context1="'general information about the mobility pakages'"
 	>
 
-	 
-
-	  <h1>overview</h1>
-    
-
-    
+	 <ul>
+		<li>poiuy</li>
+		<li>poiuy</li>
+		<li>poiuy</li>
+		<li>poiuy</li>
+	 </ul>
     </Window>
 
     
@@ -34,6 +34,15 @@ export default {
 </script>
 
 <style scoped>
+
+.window-box{
+	/* outline: solid; */
+	border-radius: 50px ;
+	background-color: var(--D-t-support);
+
+
+
+}
 h1{
 	color:red;
 }

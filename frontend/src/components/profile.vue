@@ -4,6 +4,7 @@
 				profile page
 				<router-link to="/login">log-out</router-link>
 				<router-link to="/wizard">wizardt</router-link>
+					<router-link to="overview">info</router-link>
 			</div>
 
 			<div class="window " id="overview">
