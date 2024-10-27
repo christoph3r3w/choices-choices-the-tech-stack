@@ -44,16 +44,21 @@ export default {
 		this.checkIfProfilePage();
 	},
 	watch: {
-		'$route': 'checkIfProfilePage'
+		$route: "checkIfProfilePage",
 	},
 	methods: {
 		reloadPage() {
-			window.location.reload();
-			console.log(window.location);
+			if (this.$route.path === '/profile') {
+				window.location.reload();
+			} else if (this.$route.path.startsWith('/profile#wizard')) {
+				this.$router.push('/profile');
+			} else {
+				// For non-profile pages, reload as before
+				window.location.reload();
+			}
 		},
 		checkIfProfilePage() {
-			// Adjust this condition based on your route structure
-			this.isProfilePage = this.$route.path.includes('/profile');
+			this.isProfilePage = this.$route.path.includes("/profile ");
 		},
 	},
 };
@@ -61,8 +66,18 @@ export default {
 
 <style scoped>
 section {
+
+	position: fixed;
+ 	 top: 0;
 	width: 100%;
 	height: auto;
+	/* outline: solid; */
+	backdrop-filter: blur(5px);
+	isolation: isolate;
+	z-index: 56;
+	background-color: var(--body-color2) ;
+
+
 }
 
 nav {
@@ -71,13 +86,17 @@ nav {
 	display: flex;
 	align-items: center;
 	padding: 2%;
+	
+
 }
+
+
 
 span {
 	width: 100%;
 	height: auto;
-	/* outline: solid red; */
 	color: var(--D-t-support);
+	
 }
 
 .logo {
