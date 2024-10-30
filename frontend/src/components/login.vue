@@ -309,5 +309,82 @@ export default {
 
 	background: conic-gradient(from 0deg at 80% -39%, var(--D-base-bk) 35%, var(--D-mid-bk) 100%), url(https://grainy-gradients.vercel.app/noise.svg);
 	filter: blur(15px);
+@media screen and (width < 800px) {
+	.login-container {
+		position: relative;
+		/* outline: solid ; */
+	}
+
+	.login-container> :nth-child(1) {
+		max-width: revert;
+		height: auto;
+		position: absolute;
+		inset: 0;
+	}
+
+	.login-container> :nth-child(2) {
+		z-index: 3;
+		width: 70%;
+		height: 70%;
+	}
+
+	.noise {
+		filter: blur(0px);
+
+		background: conic-gradient(from 0deg at 80% -39%,
+				var(--D-base-bk) 30%,
+				var(--D-mid-bk) 100%),
+			url(https://grainy-gradients.vercel.app/noise.svg);
+	}
+
+	.login-container article form .nextPage {
+		/* margin-block: 3%; */
+		height: 10cqb;
+	}
+}
+
+@media screen and (width < 450px) {
+	.login {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		min-width: fit-content;
+		height: 100dvh;
+	}
+
+	.login-container {
+		position: relative;
+		border-radius: 0;
+		height: 77cqb;
+	}
+
+	.login-container .login-content {
+		display: none;
+	}
+
+	.login-container> :nth-child(2) {
+		border-radius: inherit;
+		height: fit-content;
+		height: 100%;
+		width: 100%;
+		overflow: visible;
+		padding-bottom: 3%;
+	}
+
+	.login-container article {
+		container-type: normal;
+	}
+
+	.login-container article form {
+		/* outline: solid; */
+
+		& input:focus-visible {
+			outline-offset: 1px;
+		}
+
+		& .nextPage {
+			height: 10cqb;
+		}
+	}
 }
 </style>
