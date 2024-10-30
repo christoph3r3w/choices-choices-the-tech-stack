@@ -85,37 +85,72 @@ export default {
 	height: 77cqb;
 
 	align-items: center;
-	border-radius: 2pc 1pc 1pc 2pc;
+	justify-content: center;
+	border-radius: 2pc;
 	perspective: 2000px;
 
+	/* outline: solid; */
+
 	&> :nth-child(1) {
-		max-width: 34vw;
-		height: 77cqb;
-		background-color: blanchedalmond;
+		height: 100%;
+		background-color: var(--body-color2)
+		
 	}
 
 	&> :nth-child(2) {
 		width: 35vw;
-		height: 40vw;
+		width: clamp(10rem, 15rem + 25vw, 100rem);
+		height: 100%;
 	}
 }
 
 /* animation  */
 
 .login-container:hover aside {
-	transform: rotateY(20deg) translateX(-3%) scale(0.95);
-	perspective: 2000px;
-	filter: brightness(1000%);
-	filter: blur(50px) contrast(110%);
+	/* transform: rotateY(20deg) translateX(-3%) scale(0.95); */
+	transform: translateX(.5%) scale(0.99);
+	perspective: 3000px;
+	box-shadow: 
+		inset 0 0 10pc rgba(134, 134, 134, 0.222),
+		0 1px 10px rgba(203, 203, 203, 0.186)
+	;
+
+	/* filter: brightness(1000%); */
+	/* filter: blur(50px) contrast(110%); */
+	/* filter: blur(50px) brightness(140%) contrast(110%); */
+	/* filter: blur(5px) brightness(140%) contrast(110%); */
+	/* filter: contrast(110%) brightness(120%) ; */
+	/* filter: blur(5px) brightness(100%) contrast(100%); */
 }
+
+.login-container:hover .noise {
+	transition: 3s cubic-bezier(0.34, -0.04, 0.17, 0.98);
+
+	/* background test 1 */
+	background: conic-gradient(from 5deg at 78% -39%,
+		var(--D-base-bk) 35%,
+		var(--D-mid-bk) 100%),
+		url(https://grainy-gradients.vercel.app/noise.svg);
+	
+	/* background test 2 */
+	background: conic-gradient(from 5deg at 78% -39%,
+		var(--body-color) 35%,
+		var(--body-color) 100%,
+		url(https://grainy-gradients.vercel.app/noise.svg));
+	filter: blur(5px) brightness(100%) contrast(-100%);
+
+
+}
+
 
 .login-content {
 	position: relative;
 	overflow: hidden;
 	border-radius: clamp(10px, 50vw - 1rem, 2pc);
-	transition: 5s cubic-bezier(0.34, -0.04, 0.17, 0.98);
+	transition: 3s cubic-bezier(0.34, -0.04, 0.17, 0.98);
 	transform-origin: left;
 
+	position: absolute;
 	width: 100%;
 }
 
@@ -136,13 +171,15 @@ export default {
 .login-container>article {
 	display: flex;
 	flex-direction: column;
-	padding: 8%;
-	padding-bottom: 0;
-	border-radius: 0pc 1pc 1pc 0pc;
-	container-type: size;
+	padding: 6%;
+	padding-bottom: 5vh;
+	border-radius: 1pc;
+	container-type: inline-size;
 	container-name: login;
 	text-wrap: stable;
 	word-wrap: break-word;
+
+	z-index: 3;
 }
 
 .login-container article h1 {
@@ -183,16 +220,16 @@ export default {
 	}
 
 	& .nextPage {
-		width: 100%;
+		width: 90%;
 		height: 7cqh;
 		margin-bottom: 10%;
 		color: white;
-		border-radius: 0.8pc;
+		border-radius: clamp(0.5rem, 2vw, 1.8pc);
 		border: none;
 		background-color: var(--black);
 		display: grid;
 		place-content: center;
-
+		align-self: center;
 		cursor: pointer;
 
 		
@@ -251,18 +288,23 @@ export default {
 .noise {
 	width: 100%;
 	height: 100%;
-
+	transition: 3s cubic-bezier(0.34, -0.04, 0.17, 0.98);
+	/* background test 1 */
 	background: conic-gradient(from 0deg at 80% -39%,
 			var(--D-base-bk) 35%,
 			var(--D-mid-bk) 100%),
 		url(https://grainy-gradients.vercel.app/noise.svg);
-	/* filter: blur(15px); */
+
+		/* background test 2 */
+	background: conic-gradient(from 0deg at 80% -39%,
+			var(--body-color) 35%,
+			var(--body-color) 100%),
+		url(https://grainy-gradients.vercel.app/noise.svg);
 }
 
 @media screen and (width < 800px) {
 	.login-container {
 		position: relative;
-		/* outline: solid ; */
 	}
 
 	.login-container> :nth-child(1) {
@@ -281,15 +323,18 @@ export default {
 	.noise {
 		filter: blur(0px);
 
-		background: conic-gradient(from 0deg at 80% -39%,
-				var(--D-base-bk) 30%,
-				var(--D-mid-bk) 100%),
-			url(https://grainy-gradients.vercel.app/noise.svg);
+		background: conic-gradient(from 5deg at 78% -39%,
+		var(--body-color) 35%,
+		var(--body-color) 100%,
+		url(https://grainy-gradients.vercel.app/noise.svg));
+	filter: blur(5px) brightness(100%) contrast(-100%);	
 	}
 
 	.login-container article form .nextPage {
 		/* margin-block: 3%; */
 		height: 10cqb;
+		width: 100%;
+
 	}
 }
 
