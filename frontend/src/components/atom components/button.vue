@@ -53,7 +53,7 @@
 		background-image: linear-gradient(1deg,var(--D-mid-bk) 5%, rgb(46, 200, 202) 46%);
 		box-shadow: inset 0 -1px 5px var(--D-white2);		
 		border: none;
-		/* font-size: clamp(1rem, 0.0217rem + 4.3478vw, 3.5rem); */
+		font-size: clamp(1rem, 0.0917rem + 4.3478vw, 1.6rem);
 		contain:content;
 		container-type:normal;
 		container-name: button;
