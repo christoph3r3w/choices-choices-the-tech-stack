@@ -7,12 +7,12 @@ Resolves issue #...
 
 ## How Has This Been Tested?
 
-- [x] User test
-- [x] Accessibility test
-- [x] Performance test
-- [x] Responsive Design test
-- [x] Device test
-- [x] Browser test
+- [ ] User test
+- [ ] Accessibility test
+- [ ] Performance test
+- [ ] Responsive Design test
+- [ ] Device test
+- [ ] Browser test
 - [ ] ...
 
 ## Images & assets
@@ -26,9 +26,9 @@ Resolves issue #...
 
 ### And then do the following test
 
-- [x] tab test
-- [x] color-contrast
-- [x] responsiveness
+- [ ] tab test
+- [ ] color-contrast
+- [ ] responsiveness
 - [ ] ...
 
 
