@@ -17,8 +17,8 @@
 	export default{
 		name:'Button',
 		props:{
-			text:{type:String,required:true},
-			task:{type:String,default:''}
+			text:{type:String, required:true},
+			task:{type:String, default:''}
 		},
 		computed:{
 			isRoute(){
