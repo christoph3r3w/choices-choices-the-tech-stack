@@ -108,11 +108,12 @@ export default {
 
 .login-container:hover aside {
 	/* transform: rotateY(20deg) translateX(-3%) scale(0.95); */
-	transform: translateX(.5%) scale(0.99);
+	/* transform: translateX(.5%) scale(0.99); */
 	perspective: 3000px;
 	box-shadow: 
 		inset 0 0 10pc rgba(134, 134, 134, 0.222),
-		0 1px 10px rgba(203, 203, 203, 0.186)
+		inset 2px 0 2pc var(--D-mid-bk),
+		0 1px 10px rgba(203, 203, 203, 0.249)
 	;
 
 	/* filter: brightness(1000%); */
