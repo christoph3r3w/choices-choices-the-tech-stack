@@ -32,6 +32,10 @@
 /* box shadowing op componenten */
 --bottom-shadow: 0px 9px 12px -2px var(--D-mid-bk);	
 
+/* new design background */
+--cream-bk:light-dark(blanchedalmond, rgb(91, 83, 72));
+
+
 }
 
 html, body, div, span, applet, object, iframe,
