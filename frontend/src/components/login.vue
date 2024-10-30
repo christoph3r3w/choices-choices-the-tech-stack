@@ -22,20 +22,9 @@
 						<input type="Password" name="Password" id="Password" v-model="password" placeholder="Password" required>
 					</label>
 
+					<Button :text="'sign-in'" :task="'submit'" class="nextPage" />
 
-
-
-					<!-- <Button
-				text="next page"
-				color=""
-				colorLine="none"
-				task="/profile"
-				class="nextPage"
-				
-				/> -->
-
-					<button class="nextPage">sign-in</button>
-
+					<!-- <button class="nextPage">sign-in</button> -->
 				</form>
 				<a href="https://apply.deloitte.com/careers/ResetPassword/?">forgot my Password</a>
 			</article>
@@ -50,11 +39,14 @@
 </template>
 
 <script>
-
-import axios from 'axios';
+import Button from "./atom components/button.vue";
+import axios from "axios";
 
 export default {
-	name: 'Login',
+	name: "Login",
+	components: {
+		Button,
+	},
 	data() {
 		return {
 			email: '',
@@ -247,11 +239,15 @@ export default {
 		height: 7cqh;
 		margin-bottom: 10%;
 		color: white;
-		background-color: var(--black);
-		border-radius: .8pc;
+		border-radius: 0.8pc;
 		border: none;
+		background-color: var(--black);
 		display: grid;
 		place-content: center;
+
+		cursor: pointer;
+
+		
 
 		&:focus-visible,
 		:focus-within {
@@ -262,7 +258,9 @@ export default {
 	}
 }
 
-.login-container article>a {
+:deep(.button){
+			background: black ;
+}
 
 	color: var(--D-black);
 	text-decoration: none;
