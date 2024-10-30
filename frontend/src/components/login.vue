@@ -5,7 +5,7 @@
 
 			<article>
 				<h1 aria-label="login">Log-in</h1>
-				<p>Mobilti package</p>
+				<p> mobility package</p>
 				<div class="space"></div>
 
 				<form @submit.prevent="handleSubmit">
