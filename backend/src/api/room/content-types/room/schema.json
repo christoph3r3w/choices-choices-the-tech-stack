@@ -4,7 +4,8 @@
   "info": {
     "singularName": "room",
     "pluralName": "rooms",
-    "displayName": "room"
+    "displayName": "room",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,6 +14,19 @@
   "attributes": {
     "cool": {
       "type": "text"
+    },
+    "age": {
+      "type": "integer"
+    },
+    "mediaTest": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
