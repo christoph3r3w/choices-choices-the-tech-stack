@@ -31,6 +31,9 @@
 <script>
 import Button from "./atom components/button.vue";
 import axios from "axios";
+import {jsonServerURL,StrapiURL} from '@/axios'; // Import Axios.js
+
+
 
 export default {
 	name: "Login",
@@ -45,16 +48,30 @@ export default {
 	},
 	methods: {
 		async handleSubmit() {
-			const response = await axios.post("/users", {
-				email: this.email,
-				password: this.password,
-			});
+			try{
+			const response = await StrapiURL.post('users', 
+			// Content-Type: application/json,
+			{
+				'data':{
+				
+					email: this.email,
+					password: this.password,
+				}
+			}
+		
+		);
 
-			if (response.status == 201) {
-				this.$router.push("/profile");
-				console.log(response);
-			} else {
-				console.warn("not good");
+			console.log(response.data);
+			localStorage.setItem('token',response.data.token)
+
+			// if (response.status == 201) {
+			// 	this.$router.push("/profile");
+			// 	console.log(response);
+			// } else {
+			// 	console.warn("not good");
+			// 
+			} catch (error) {
+					console.error('Error :', error);
 			}
 		},
 	},
