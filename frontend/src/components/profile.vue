@@ -145,8 +145,26 @@
 				<Wizard class="window window-wizard" />
 			</div>
 
-			<div class="window " id="overview">
-				<Overview class= "window window-overview" />
+			<div class="window" id="overview">
+				<Overview class= "window window-overview" >
+					
+					<div v-if="roomData">
+						<p>Room Data: {{ roomData }}</p>
+					</div>
+
+					<h1>Posts</h1>
+					<ul>
+						<li v-for="post in posts" :key="post.id">
+							<h2>{{ post.title }}</h2>
+							<p>Views: {{ post.views }}</p>
+						</li>
+						<p v-for="user in users2">{{ user }}</p>
+						<p v-for="answer in answers">{{ answer  }}</p>
+					</ul>
+
+				</Overview>
+
+
 			</div>
 
 	
@@ -156,7 +174,7 @@
 <script>
 	import Window from '@/components/molecule component/window.vue'
 	import Wizard from './wizard.vue';
-	import Overview from './Overview.vue';
+	import Overview from './overview.vue';
 	import Button from './atom components/button.vue';
 
 	export default {

@@ -12,6 +12,8 @@
 		<li>poiuy</li>
 		<li>poiuy</li>
 	 </ul>
+	<slot></slot>
+
     </Window>
 
     
@@ -37,8 +39,8 @@ export default {
 
 .window-box{
 	/* outline: solid; */
-	border-radius: 50px ;
 	background-color: var(--D-t-support);
+	border-radius: clamp(0.5rem, 2.5vw, 50px);
 
 
 
