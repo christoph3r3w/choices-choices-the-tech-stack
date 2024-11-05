@@ -5,8 +5,12 @@
 		id="wizard"
 		:context1="'read and choose carefully'"
 	>
-		<div class="window-list" v-for="(wini,winiIndex) in 11" :key="winiIndex">
-			<label v-for=" n in 5" 
+		<fieldset class="wiz-list" v-for="(wini,winiIndex) in 3" :key="winiIndex">
+			<legend>
+				Question {{ winiIndex + 1 }}
+			</legend>
+			<!-- random cell calculation -->
+			<label v-for=" n in winiIndex % 2 * winiIndex + 2 " 
 			:key="n" 
 			:for="`wini${winiIndex + 1}-check${n}`" 
 			>
@@ -16,12 +20,15 @@
 				:id="`wini${winiIndex + 1}-check${n}`" 
 				:value="n"
 				v-model="winiSelect[winiIndex]"
-				required />
+				required 
+				style="display: none;"/>
+
+				<p class="wiz-answer">answer kiko mas minpor skibi </p>
 			</label>
-		</div>
+		</fieldset>
 
 		<nav class="button-box">
-			<Button 
+			<Button  
 			:text="'Submit'"
 			:task="''"
 			 @click.prevent="handleSubmit" 
@@ -40,6 +47,8 @@
 import Window from "@/components/molecule component/window.vue";
 import Button from "@/components/atom components/button.vue";
 import axios from "axios";
+import {jsonServerURL,StrapiURL} from '@/axios'; // Import Axios.js
+
 // import Checkbox from "@/components/atom components/checkbox.vue";
 
 export default {
@@ -68,7 +77,7 @@ export default {
 			console.log('data', selections);
 			
 			try {
-				const response = await axios.post('/users', {
+				const response = await StrapiURL.post('/answers', {
 					wini: selections,
 				});
 				
@@ -86,10 +95,13 @@ export default {
 			window.location.hash = 'top';
 		},
 
-		handleRestart() {
+		handleRestart(e) {
+			e.preventDefault();
+			
 			window.location.reload();
 			
-			window.location.hash = '';
+			window.location.hash = 'wizard';
+
 
 
 		},
@@ -130,8 +142,6 @@ export default {
 		padding-inline: 1cqh;
 		place-content: center;
 		outline: solid grey;
-		/* opacity: .4; */
-
 		border-radius: 10px;
 	}
 
