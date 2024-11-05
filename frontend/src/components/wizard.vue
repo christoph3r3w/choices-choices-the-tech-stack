@@ -174,4 +174,29 @@ export default {
 		}
 	}
 
+	@media screen and (width < 500px) {
+		
+		.wiz-list {
+			/* flex-direction: column; */
+			/* outline: solid gold ; */
+			/* outline: solid red !important; */
+		}
+
+		label{
+			width: 100% ;
+			margin-inline: 3% ;
+		}
+
+		.button-box{
+			margin-inline: 3% ;
+
+		}
+
+		.button-box Button{
+			width: 100%;
+		}
+
+
+	}
+
 </style>
