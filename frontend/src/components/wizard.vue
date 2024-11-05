@@ -100,29 +100,34 @@ export default {
 <style scoped>
 
 	.window-box{
-		border-radius: 50px 50px 0 0;
-		background-color: var(--D-light-bk);
+		border-radius: clamp(0.5rem, 2.5vw, 50px);
+		background-color: var(--D-base-bk);
+		/* background-color: hsl(157, 37%, 93%); */
 	}
 
-	.window-list{
+	.wiz-list {
 		display: flex;
 		gap: 2vw;
+		flex-wrap: wrap;
 		margin-block: 3%;
 		height: auto;
-		/* justify-content: space-between; */
-		/* outline: solid green; */
-		/* outline: solid red; */
+		justify-items: space-between;
 		filter: grayscale(1);
 		opacity: .4;
-		/* background-color: rgba(0, 0, 0, 0.514); */
 		pointer-events: none;
+		user-select: none;
+	}
+
+	legend{
+		font-size: clamp(1rem, -3.8rem + 9vw, 2.5cqh);
+		padding-bottom: 1cqh;
 	}
 	
 	label{
 		display: flex ;
-		/* flex-basis: 3rem; */
-		width: 7vw;
-		height: 5rem;
+		width: clamp(19cqh, 1rem + 3.3478vw,fit-content);
+		height: clamp(11cqw, 1rem + 3vw, 10cqh);
+		padding-inline: 1cqh;
 		place-content: center;
 		outline: solid grey;
 		/* opacity: .4; */
@@ -130,40 +135,50 @@ export default {
 		border-radius: 10px;
 	}
 
+	p{
+		user-select: none;
+	}
+
+	/* //////////////////// */
+	/* checked answer logic */
+	/* //////////////////// */
+
 	label:has(input:checked){
-		background-color: var(--D-mid-bk);
+		background-color: var(--D-dark-support);
 		opacity: 1;
 	}
 
-	/* label:has(input:checked) + label{
-		background-color: var(--D-mid-bk);
-		opacity: 1;
-	} */
+	label:has(input:checked) p{
+		color: white;
+	}
 
-	.window-list:nth-of-type(1){
+
+
+	.wiz-list:nth-of-type(1){
 		outline:none ;
 		filter: grayscale(0);
 		opacity: 1;
 		pointer-events: initial;
+		user-select:auto;
+
 
 		& label:hover{
-			background-color: var(--D-dark-support);
+			background-color: var(--D-t-support);
 		}
-
-
 	}
 
 
-	.window-list:has(input:checked) {
+	.wiz-list:has(input:checked) {
 		outline: none;
 		filter: grayscale(0);
 		opacity: 1;
+		user-select:auto;
 
 
 
 	}
 
-	.window-list:has(input:checked) +.window-list {
+	.wiz-list:has(input:checked) + .wiz-list {
 		outline: none;
 		filter: grayscale(0);
 		opacity: 1;
@@ -172,6 +187,43 @@ export default {
 		& label:hover{
 			background-color: var(--D-t-support);
 		}
+	}
+
+	.window-box:has(.wiz-list:nth-last-of-type(1) input:nth-of-type(n):checked) Button{
+		animation: h .9s ease 1s 2 ;
+		transition: .5s;
+	}
+
+	@keyframes h {
+		0%,100%{
+			outline: 1px solid;
+		}
+
+		50%{
+			outline: 5px solid;
+		}
+
+		25%,75%{
+			outline: 3px solid;
+			outline-offset: 3px;
+			opacity: .98;
+		}
+		
+	}
+
+	.button-box{
+		display: flex;
+		gap: 2%;
+		justify-content: center;
+		margin-top:5%;
+
+	}
+	
+	.button-box Button{
+		width: 20%;
+		min-width: fit-content;
+		font-size:  clamp(1rem, 0.0917rem + 4.3478vw, 1.3rem);
+
 	}
 
 	@media screen and (width < 500px) {
