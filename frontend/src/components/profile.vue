@@ -1,63 +1,154 @@
 <template>
 		<Window 
 		class="window window-profile"
-		:title="'Hi, person name'"
-		:context1="'see your package here'"
+		:title="'Hi, ' + user3.username "
+		:context1=" 'id: ' + user3.id + ' - ' + 'see your package here'"
 		id="top"
 		>
 			<div class="window-child" id="profile">
-
-				<section v-if="1 > 0" class="profile-c start">
-					
-					<article class="start-profile">
-						<img src="../assets/pexels-dan-voican-2624103-17854203.jpg" alt="">
-
-					</article>
-					<article class="start-wizard">
-
-						<Button 
-						class="start-w-button"
-						:text="'start wizard'" 
-						:task="'#wizard'"
-						></Button>
-					</article>
-				</section>
-
+				<!-- main dashboard -->
 				<Window 
-				class="window-package profile-c" 
-				v-else
-				:title="'package ...'"
+				v-if="answers.length == 10"
+				class="window-package profile-c info-config" 
+				:title="''"
 				:context1="''"
-
 				>
-					<ul>
+					<ul v-if="2 > 3">
 						<li><p>name: package name</p></li>
-						<li><p>duration: this will last this long</p></li>
+						<li><p>duration: this will last {{ user3.createdAt }}</p></li>
 						<li><p>end: it expires on this date</p></li>
-						<li><p>vehicle: what for of transport are you using</p></li>
+						<li><p>vehicle: what form of transport are you using</p></li>
 						<li><p>budget: how much it cost or how much money you get </p></li>
 						<li><p>info</p></li>
 						<li><p>info</p></li>
 						<li><p>info</p></li>
 						
 					</ul>
+					<article  v-else>
+
+						<div>
+							<h2>person</h2>
+							<ul>
+								
+								<li><p>name: package name</p></li>
+								<li><p>duration: this will last {{ user3.createdAt }}</p></li>
+								<li><p>end: it expires on this date</p></li>
+							</ul>
+						</div>
+
+						<div>
+							<h2>package</h2>
+							<ul>
+								<li><p>name: package name</p></li>
+								<li><p>name: package name</p></li>
+								<li><p>name: package name</p></li>
+								<li><p>duration: this will last {{ user3.createdAt }}</p></li>
+								<li><p>end: boom</p></li>
+								<li><p>end: boom</p></li>
+							</ul>
+						</div>
+
+						<div>
+							<h2>extra</h2>
+							<ul>
+								<li><p>info</p></li>
+								<li><p>info</p></li>
+								<li><p>info</p></li>
+							</ul>
+						</div>
+					</article>
+
+
 					
 					<router-link to="login">log-out</router-link>
 					<router-link to="overview">info</router-link>
 				</Window>
+
+				<!-- no package dashboard -->
+				<section v-else class="profile-c start">
+					
+					<article class="start-profile">
+						<img src="../assets/pexels-dan-voican-2624103-17854203.jpg" alt="">
+
+					</article>
+					<article class="start-wizard">
+						<div class="info-config"> 
+							<article >
+								<div>
+									<h2>person</h2>
+									<ul>
+										
+										<li><p>name: package name</p></li>
+										<li><p>duration: this will last {{ user3.createdAt }}</p></li>
+										<li><p>end: it expires on this date</p></li>
+									</ul>
+								</div>
+
+								<div>
+									<h2>package</h2>
+									<ul>
+										<li><p>name: package name</p></li>
+										<li><p>name: package name</p></li>
+										<li><p>name: package name</p></li>
+										<li><p>duration: this will last {{ user3.createdAt }}</p></li>
+										<li><p>end: boom</p></li>
+										<li><p>end: boom</p></li>
+									</ul>
+								</div>
+
+								<div>
+									<h2>extra</h2>
+									<ul>
+										<li><p>info</p></li>
+										<li><p>info</p></li>
+										<li><p>info</p></li>
+									</ul>
+								</div>
+							</article>
+						</div>
+
+						<!-- button box start options -->
+						<div class="buttonBox">
+							<h2> start here</h2>
+							<Button 
+							class="start-w-button"
+							:text="'Package selection'" 
+							:task="'#wizard'"
+							></Button>
+
+							<Button 
+							class="start-w-button"
+							:text="'Package info'" 
+							:task="'#overview'"
+							></Button>
+
+							<!-- <Button 
+							class="start-w-button logOut"
+							:text="'Log-out'" 
+							:task="'/Login'"
+							></Button> -->
+
+						</div>
+
+						
+					</article>
+				</section>
+
+				
 
 
 				
 				<!-- <router-link to="/wizard">wizard</router-link> -->
 			</div>
 
-			<div class="window " id="wizard">
+			<div class="window" id="wizard">
 				<Wizard class="window window-wizard" />
 			</div>
 
 			<div class="window " id="overview">
 				<Overview class= "window window-overview" />
 			</div>
+
 	
 		</Window>
 </template>
@@ -81,13 +172,18 @@
 
 
 <style scoped>
+	/* ////////////////////// */
+	/* window and selection logic */
+	/* ////////////////////// */
 
-
-	.window-profile:has(.start) :deep(h1),
-	.window-profile:has(.start) :deep(p) {
+	.window-profile:has(.start) > :deep(h1),
+	.window-profile:has(.start) > :deep(p) {
 		translate: 0 40vh;
-		margin-left: 5vw;
-		
+		padding-right: 71vw;
+	}
+
+	.window-profile:has(.window-package)  :is(#wizard,#overview){
+		display: none;
 	}
 
 	.window:has(#wizard:is(:target)) :deep(h1),
@@ -95,18 +191,13 @@
 	:deep(.window :is(h1,p)){
 		translate: 0 0 !important;
 		margin-left: 0vw !important;
-		
 	}
 
-	.window-profile:first-of-type:has(#wizard:is(:target)) .start-wizard {
+	.window-profile:first-of-type:has(#wizard:is(:target)) :is(.start-wizard,.info-config) {
 		display: none;
 	}
 
-	
-
-
 	.window-child{
-
 		display: flex;
 		flex-direction: column;
 		gap: 3rem;
@@ -116,18 +207,17 @@
 	}
 
 
-	/* all sections */
+	/* //////////////////// */
+	/* all profile sections */
+	/* //////////////////// */
 
-	
 	.profile-c{
 		display: flex;
 		height: 100%;
 		width: fit-content;
 		width: 100cqw;
-		border-radius: 50px ;
-		/* flex-direction: column; */
+		border-radius: clamp(0.5rem, 2vw, 1.8pc);
 		align-items: center;
-		/* background-color: red; */
 	}
 
 	
@@ -135,145 +225,230 @@
 
 	
 	.profile-c .start-profile{
-		width: 50cqw;
+		min-width: 20cqw;
 		height: 100%;
-		/* aspect-ratio: 1; */
-		/* border-radius: 50%; */
 		overflow: hidden;
-		/* margin-bottom: 5cqh; */
-		/* background-color: aqua; */
+
+		/* test  */
 		/* display: none; */
 		
 	}
 	
 	.profile-c .start-profile img{
 		width: 15cqw ;
-		/* height: 100%; */
 		aspect-ratio: 1;
-		/* object-position: center; */
-		/* object-fit: cover; */
+		object-position: center;
+		object-fit: cover;
+		border-radius: 50%;
 		display: none;
-		
 	}
-	
+
+	/* ////////////////////////////////////////////////////////// */
+	/* right side section where you can choose to start the wizard */
+	/* /////////////////////////////////////////////////////////// */
+
 	.start-wizard{
-		display: grid;
-		/* place-content: center; */
-		
-		width: 50cqw;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		width: 100cqw;
 		height: 100%;
 		background-color: var(--D-light-bk);
 		border-radius: inherit;
-		outline: 1px solid rgba(0, 0, 0, 0.138);
 		z-index: 0;
+	}
+	
+	.start-wizard .info-config {
+		height: 100%;
+		width: 100%;
+		border-radius: inherit;
+		padding: 3%;
+		pointer-events: none;
+		user-select:none;
+
+
+
+		& div{
+			filter:opacity(0.3) blur(3px);
+		}
+	}
+
+
+
+	.buttonBox{
+		--w:45;
+		--p: calc(calc(100 - var(--w))/2);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 3%;
+		position: absolute;
+		inset-inline-start: calc(var(--p) * 1%);
+		inset-block: 0;
+		width: calc(var(--w) * 1% );
+		height: auto;
+		border-radius: inherit;
+		
+	}
+
+	.buttonBox h2{
+		font-size: 2rem;
+		text-align: center;
+		&::first-letter{
+			text-transform: capitalize;
+		}
 	}
 
 	.start-w-button{
 		width: 100%;
-		height: 100%;
+		height: auto;
 		border-radius: inherit;
-		background-color: bisque;
 		display: grid;
 		place-content: center;
-		font-size: 3rem;
+		/* background-color: bisque; */
+		/* font-size: 3rem; */
+		padding: 3%;
 		
 	}
+
+
+	/* /////////////// */
+	/* wizard section */
+	/* ////////////// */
 
 	#wizard{
 		padding-top: 11%;
 		scroll-snap-align:start ;
+		border-radius: clamp(0.5rem, 2.5vw, 50px);
+		position: relative;
+		margin-bottom: 3% ;
 		/* translate: 0 -71vh; */
-		/* width: fit-content; */
+	}
 
+	#wizard:deep(.WD){
+		outline: 1px solid;
+		padding-top: 5%;
 	}
 
 	#wizard:is(:target){
-		/* margin: 0 -70vh; */
 		margin-top: -70vh;
 	}
 
-	.window-wizard{
-		position: relative;
-		/* translate: 0 30%; */
-		border-radius: 50px !important;
+	#overview{
+		/* outline: solid red; */
+		padding-top: calc(var(--hf-height) + 3rem);
 	}
+	
 
-	.window-package{
+
+	/* ////////////////////////////// */
+	/* styling when user is signed in  */
+	/* /////////////////////////////// */
+
+	.window-package,.info-config{
 		border: 1px solid;
 		align-items: initial;
 		flex-direction: column;
 		position: relative;
-		width: 70cqw;
-		/* height: 1; */
-		/* flex: initial; */
-		transition: 1s ease;
-		
-		div{
-			color:red;
-		}
+		/* width: 70cqw; */
+		transition: .5s ease;
+		background-color: var(--D-light-bk);
+		overflow: hidden;
+
 
 	}
 
-	/* .window-package:is(:hover){
-		flex: 0 1 90cqh;
-	} */
+
+	/* /////////////////////////////////// */
+	/* user profile and package iformation */
+	/* /////////////////////////////////// */
+
 
 	:deep(.window-package){
 
 		h1{
-			font-size: clamp(1rem, -3.8rem + 8vw, 3cqi);;
+			font-size: clamp(1rem, -3.8rem + 8vw, 3cqi);
 
 		}
 	}
 
-	.window-package ul{
+	.info-config ul{
 		width: 100%;
-		height: 100%;
+		height: auto;
 		margin-top: 3%;
 
 		display: flex;
 		flex-wrap: wrap;
 		align-content: flex-start;
 		gap: 2%;
-		overflow: hidden;
+		/* overflow: hidden; */
 		text-wrap-mode:wrap;
 		text-wrap-style: balance;
 		text-overflow: ellipsis;
+
+		
 	}
 
-	.window-package li{
+	.info-config li{
 		height: fit-content;
-		flex: 1 0 max-content;
 		border-bottom: 1px solid;
-
-		
 		padding-top: 2%;
-		/* outline: solid; */
-		/* display: flex;
-		align-content:first baseline;
-		justify-content: last baseline ; */
-		
 	}
 	
-	.window-package li p{
+	.info-config li p{
 		height: fit-content;
 		min-width: 1rem;
 		width: fit-content;
 
 		font-size: clamp(1rem, -3.8rem + 8vw, 1cqi);
 		text-wrap:balance;
-		text-wrap:auto;
-		/* text-decoration: underline; */
-		/* outline: solid red; */
-		
+		text-wrap:auto;		
 	}
 
-	.window-package li p::before{
+	.info-config li p::before{
 		content: '';
 		color: var(--D-mid-bk);
+		margin-right: 8px;
+	}
 
-		margin-right: 5px;
-		
+	.info-config article{
+		display: grid;
+		height: 80cqh;
+		grid-template-columns: repeat(auto-fit, minmax(calc(20cqw), 1fr));
+		column-gap: 6%;
+	}
+
+	.info-config article h2{
+		font-size: clamp(1rem, -3.8rem + 8vw, 1.5cqi);
+		font-weight: 700;
+		border-bottom: solid;
+	}
+
+	/* .info-config article div {} */
+
+
+	.info-config article ul {
+		flex-direction: column;
+		flex-wrap: nowrap;
+		margin-left: 12px;
+		padding-top: 6%;
+		height: 90%;
+	}
+	
+	.info-config article li  {
+		border-bottom: none;
+		list-style:disc  ;
+
+	}
+
+	.info-config article div:nth-of-type(3):hover li:hover {
+		border-left: 5px solid;
+		list-style:none ;
+
+	}
+
+	.info-config article li p::before{
+		content: '';
 	}
 
 
