@@ -1,12 +1,12 @@
   <template>
 
   <div class="body">
-    <Header class="header" />
+    <Header class="headr" />
   
     <router-view class="content" />
   
     
-    <Footer class="footer" />
+    <footer class="footr" />
 
   </div>
     
@@ -14,14 +14,14 @@
 
 <script>
     import Header from '@/components/molecule component/head-nav.vue'
-    import Footer from '@/components/molecule component/footer.vue'
+    import footr from '@/components/molecule component/footr.vue'
     
       export default {
         name: 'app',
     
         components: {
           Header,
-          Footer,
+          footr,
         }
       }
     
@@ -33,8 +33,8 @@
 
 *{
   --hf-height:5vh;
-  --body-color: color(display-p3 0.9494 0.9152 0.886);
-  --body-color2:color(display-p3 0.9494 0.9152 0.886 / 0.9);
+  /* --body-color: color(display-p3 0.9494 0.9152 0.886);
+  --body-color2:color(display-p3 0.9494 0.9152 0.886 / 0.9); */
 }
 .body{
   min-height: 100vh;
@@ -42,10 +42,10 @@
   /* color: white ; */
   display: flex;
   flex-direction: column;
-  background-color: var(--body-color);
+  background-color: var(--cream-bk);
 }
 
-.header,.footer{
+.headr,.footr{
   color: var(--LD-text,white);
   padding-inline: 2.5%;
   flex:0 1 var(--hf-height);
@@ -55,7 +55,7 @@
   outline: .001rem solid;
 } */
 
-.footer{
+.footr{
   background-color: black;
   color: white;
   
