@@ -34,6 +34,7 @@
 
 /* new design background */
 --cream-bk:light-dark(blanchedalmond, rgb(91, 83, 72));
+--cream-bk:light-dark( hsl(36, 48%, 94%), hsl(36, 14%, 14%));
 
 
 }
@@ -123,12 +124,13 @@ h1, a {
   margin: 0;
   font-weight: normal;
   interpolate-size: allow-keywords;
+  transition-behavior: allow-discrete;
 }
 
 body {
   min-height: 100vh;
-  color: var(--color-text);
-  background: var(--color-background);
+  color: var(--LD-text);
+  background: var(--LD-background);
   transition:
     color 0.5s,
     background-color 0.5s;
