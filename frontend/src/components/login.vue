@@ -111,7 +111,6 @@ export default {
 	&> :nth-child(1) {
 		height: 100%;
 		background-color: var(--body-color2)
-		
 	}
 
 	&> :nth-child(2) {
@@ -127,11 +126,10 @@ export default {
 	/* transform: rotateY(20deg) translateX(-3%) scale(0.95); */
 	/* transform: translateX(.5%) scale(0.99); */
 	perspective: 3000px;
-	box-shadow: 
+	box-shadow:
 		inset 0 0 10pc rgba(134, 134, 134, 0.222),
 		inset 2px 0 2pc var(--D-mid-bk),
-		0 1px 10px rgba(203, 203, 203, 0.249)
-	;
+		0 1px 10px rgba(203, 203, 203, 0.249);
 
 	/* filter: brightness(1000%); */
 	/* filter: blur(50px) contrast(110%); */
@@ -146,15 +144,15 @@ export default {
 
 	/* background test 1 */
 	background: conic-gradient(from 5deg at 78% -39%,
-		var(--D-base-bk) 35%,
-		var(--D-mid-bk) 100%),
+			var(--D-base-bk) 35%,
+			var(--D-mid-bk) 100%),
 		url(https://grainy-gradients.vercel.app/noise.svg);
-	
+
 	/* background test 2 */
 	background: conic-gradient(from 5deg at 78% -39%,
-		var(--body-color) 35%,
-		var(--body-color) 100%,
-		url(https://grainy-gradients.vercel.app/noise.svg));
+			var(--body-color) 35%,
+			var(--body-color) 100%,
+			url(https://grainy-gradients.vercel.app/noise.svg));
 	filter: blur(5px) brightness(100%) contrast(-100%);
 
 
@@ -218,6 +216,8 @@ export default {
 
 	& label {
 		margin-block: 6%;
+		border-radius: clamp(0.5rem, 2vw, 1.8pc);
+
 	}
 
 	& input {
@@ -230,11 +230,11 @@ export default {
 		font-size: 1.5rem;
 	}
 
-	& input:focus-visible {
+	& label:has(input:focus-visible) {
 		outline: 2px solid var(--D-mid-bk);
 		outline-style: dashed;
-		outline-offset: 10px;
-		border-radius: 1pc;
+		outline-offset: 7px;
+		/* border-radius: 1pc; */
 	}
 
 	& .nextPage {
@@ -250,7 +250,7 @@ export default {
 		align-self: center;
 		cursor: pointer;
 
-		
+
 
 		&:focus-visible,
 		:focus-within {
@@ -260,11 +260,11 @@ export default {
 		}
 	}
 
-	
+
 }
 
-:deep(.button){
-	background: black ;
+:deep(.button) {
+	background: black;
 }
 
 .login-container article>a {
@@ -313,7 +313,7 @@ export default {
 			var(--D-mid-bk) 100%),
 		url(https://grainy-gradients.vercel.app/noise.svg);
 
-		/* background test 2 */
+	/* background test 2 */
 	background: conic-gradient(from 0deg at 80% -39%,
 			var(--body-color) 35%,
 			var(--body-color) 100%),
@@ -342,10 +342,10 @@ export default {
 		filter: blur(0px);
 
 		background: conic-gradient(from 5deg at 78% -39%,
-		var(--body-color) 35%,
-		var(--body-color) 100%,
-		url(https://grainy-gradients.vercel.app/noise.svg));
-	filter: blur(5px) brightness(100%) contrast(-100%);	
+				var(--body-color) 35%,
+				var(--body-color) 100%,
+				url(https://grainy-gradients.vercel.app/noise.svg));
+		filter: blur(5px) brightness(100%) contrast(-100%);
 	}
 
 	.login-container article form .nextPage {
