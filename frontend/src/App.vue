@@ -1,12 +1,12 @@
   <template>
 
-  <div class="body">
-    <Header class="headr" />
+  <div class="bdy">
+    <Header class="headr"/>
   
-    <router-view class="content" />
+    <router-view class="content"/>
   
     
-    <Footer class="footr" />
+    <Footer class="footr"/>
 
   </div>
     
@@ -36,7 +36,7 @@
   /* --body-color: color(display-p3 0.9494 0.9152 0.886);
   --body-color2:color(display-p3 0.9494 0.9152 0.886 / 0.9); */
 }
-.body{
+.bdy{
   min-height: 100vh;
   position: relative;
   /* color: white ; */
@@ -70,10 +70,4 @@
   margin-top: var(--hf-height) ;
 
 }
-
-
-
-
-
-
 </style>
