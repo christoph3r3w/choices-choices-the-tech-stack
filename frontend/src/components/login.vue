@@ -31,7 +31,7 @@
 <script>
 import Button from "./atom components/button.vue";
 import axios from "axios";
-import {jsonServerURL,StrapiURL} from '@/axios'; // Import Axios.js
+import { jsonServerURL, StrapiURL } from '@/axios'; // Import Axios.js
 
 
 
@@ -46,34 +46,37 @@ export default {
 			password: "",
 		};
 	},
-	methods: {
+	_methods: {
 		async handleSubmit() {
-			try{
-			const response = await StrapiURL.post('users', 
-			// Content-Type: application/json,
-			{
-				'data':{
-				
-					email: this.email,
-					password: this.password,
+			try {
+				const response = await jsonServerURL.post('users',
+					// Content-Type: application/json,
+					{
+						email: this.email,
+						password: this.password,
+					}
+
+				);
+
+				console.log(response.data);
+				localStorage.setItem('token', response.data.token);
+
+				if (response.status == 201) {
+					this.$router.push("/profile");
+					console.log(response);
+				} else {
+					console.warn("not good");
 				}
-			}
-		
-		);
-
-			console.log(response.data);
-			localStorage.setItem('token',response.data.token)
-
-			// if (response.status == 201) {
-			// 	this.$router.push("/profile");
-			// 	console.log(response);
-			// } else {
-			// 	console.warn("not good");
-			// 
 			} catch (error) {
-					console.error('Error :', error);
+				console.error('Error :', error);
 			}
 		},
+	},
+	get methods() {
+		return this._methods;
+	},
+	set methods(value) {
+		this._methods = value;
 	},
 };
 </script>
