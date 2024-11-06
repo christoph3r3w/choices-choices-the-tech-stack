@@ -3,7 +3,7 @@
     "dev:frontend": "npm run dev --prefix frontend -- --open",
     "build:frontend": "npm run build --prefix frontend ",
     "dev:backend": "npm run develop --prefix backend -- --open",
-    "build:backend": "npm run build --prefix backend ",
+    "build:backend": "npm run deploy --prefix backend ",
     "dev:json-server": "json-server test-backend/db.json --port 3001 -- --open",
     "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\" \"npm run dev:json-server\"",
     "build": "npm run build --prefix frontend && npm run build --prefix backend"
