@@ -43,6 +43,7 @@
   display: flex;
   flex-direction: column;
   background-color: var(--cream-bk);
+  overflow-y: scroll;
 }
 
 .headr,.footr{
@@ -51,23 +52,23 @@
   flex:0 1 var(--hf-height);
 }
 
-/* .header{
-  outline: .001rem solid;
-} */
+.headr{
+  /* outline: .001rem solid; */
+  margin-bottom: var(--hf-height) ;
+
+}
 
 .footr{
   background-color: black;
   color: white;
+  /* color: rgb(175, 57, 57); */
+  height: 4cqh;
   
-  /* position: absolute; */
-  bottom: 0;
-  left:0;
-  right:0;
 }
 
 .content{
+  position: relative;
   flex: 1 0 100%;
-  margin-top: var(--hf-height) ;
-
+  height: auto;
 }
 </style>

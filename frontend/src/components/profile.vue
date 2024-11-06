@@ -633,6 +633,11 @@
 
 	@media screen and (width < 750px) {
 
+		.window.window-profile{
+			background-color: rgb(196, 244, 255);
+			/* overflow-y: scroll; */
+		}
+
 		.start-wizard{
 			overflow-y: hidden;
 		}
@@ -642,6 +647,23 @@
 			overflow: unset;
 			transition: .3s;
 		}
+
+
+
+		.profile-c:has(article + aside) {
+		border: none;
+		
+		flex-direction:column;
+
+		& > :nth-child(n+3){
+			border: 1px solid;
+			padding: 2%;
+			border-radius: inherit ;
+			background-color: var(--D-light-bk);
+
+		}
+	}
+
 		
 		.info-config article{
 			display: grid;

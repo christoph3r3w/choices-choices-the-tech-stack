@@ -70,8 +70,7 @@ section {
 	position: fixed;
  	 top: 0;
 	width: 100%;
-	height: auto;
-	/* outline: solid; */
+	height: var(--hf-height);
 	backdrop-filter: blur(5px);
 	isolation: isolate;
 	z-index: 56;

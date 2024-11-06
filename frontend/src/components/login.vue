@@ -18,7 +18,8 @@
 							required />
 					</label>
 
-					<Button :text="'sign-in'" :task="'submit'" class="nextPage" />
+					<!-- <Button :text="'sign-in'" :task="'submit'" class="nextPage" /> -->
+					<Button :text="'sign-in'" :task="'/profile'" class="nextPage" />
 
 					<!-- <button class="nextPage">sign-in</button> -->
 				</form>
@@ -49,24 +50,25 @@ export default {
 	_methods: {
 		async handleSubmit() {
 			try {
-				const response = await jsonServerURL.post('users',
-					// Content-Type: application/json,
-					{
-						email: this.email,
-						password: this.password,
-					}
+				this.$router.push("/profile");
 
-				);
+				// const response = await jsonServerURL.post('users',
+				// 	// Content-Type: application/json,
+				// 	{
+				// 		email: this.email,
+				// 		password: this.password,
+				// 	}
 
-				console.log(response.data);
-				localStorage.setItem('token', response.data.token);
+				// );
 
-				if (response.status == 201) {
-					this.$router.push("/profile");
-					console.log(response);
-				} else {
-					console.warn("not good");
-				}
+				
+				// if (response.status == 201) {
+				// 	this.$router.push("/profile");
+				// 	console.log(response.data);
+				// 	localStorage.setItem('token', response.data.token);
+				// } else {
+				// 	console.warn("not good");
+				// }
 			} catch (error) {
 				console.error('Error :', error);
 			}

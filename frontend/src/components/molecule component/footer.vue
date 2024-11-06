@@ -16,13 +16,19 @@
 <style scoped>
 
 	footer{
-		position: relative;
 		display: flex;
 		align-items: center;
+		background-color: var(--D-dark-support);
+		
+		position: relative;
+		bottom: 0;
+		left:0;
+		right:0;
 	}
 
 	a{
 		color: var(--D-t-support);
+		color: var(--D-mid-bk);
 	}
 
 </style>
