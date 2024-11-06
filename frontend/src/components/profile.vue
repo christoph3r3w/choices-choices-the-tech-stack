@@ -8,23 +8,12 @@
 			<div class="window-child" id="profile">
 				<!-- main dashboard -->
 				<Window 
-				v-if="answers.length == 10"
+				v-if="userIn > -5"
 				class="window-package profile-c info-config" 
 				:title="''"
 				:context1="''"
 				>
-					<ul v-if="2 > 3">
-						<li><p>name: package name</p></li>
-						<li><p>duration: this will last {{ user3.createdAt }}</p></li>
-						<li><p>end: it expires on this date</p></li>
-						<li><p>vehicle: what form of transport are you using</p></li>
-						<li><p>budget: how much it cost or how much money you get </p></li>
-						<li><p>info</p></li>
-						<li><p>info</p></li>
-						<li><p>info</p></li>
-						
-					</ul>
-					<article  v-else>
+					<article >
 
 						<div>
 							<h2>person</h2>
@@ -58,19 +47,52 @@
 						</div>
 					</article>
 
+					<aside >
+						<div class=" notifications info-config">
+							12345678
+							{{ userIn - 1 }}
+						</div>
+						
+
+						<div class="buttonBox">
+							<Button 
+							class="button-component"
+							:text="'Package selection'" 
+							:task="'#wizard'"
+							></Button>
+
+							<Button 
+							class="button-component"
+							:text="'Package info'" 
+							:task="'#overview'"
+							></Button>
+
+							<Button 
+							class="button-component log-out"
+							:text="'Log-out'" 
+							:task="'/Login'"
+							></Button>
+
+							<Button 
+							class="button-component"
+							:text="'Increment User In'" 
+							@click="decrementUserIn"
+							></Button>
+
+						</div>					
+					</aside>
+
 
 					
-					<router-link to="login">log-out</router-link>
-					<router-link to="overview">info</router-link>
 				</Window>
 
 				<!-- no package dashboard -->
 				<section v-else class="profile-c start">
 					
 					<article class="start-profile">
-						<img src="../assets/pexels-dan-voican-2624103-17854203.jpg" alt="">
-
+						<!-- spacer -->
 					</article>
+
 					<article class="start-wizard">
 						<div class="info-config"> 
 							<article >
@@ -111,19 +133,19 @@
 						<div class="buttonBox">
 							<h2> start here</h2>
 							<Button 
-							class="start-w-button"
+							class="button-component"
 							:text="'Package selection'" 
 							:task="'#wizard'"
 							></Button>
 
 							<Button 
-							class="start-w-button"
+							class="button-component"
 							:text="'Package info'" 
 							:task="'#overview'"
 							></Button>
 
 							<!-- <Button 
-							class="start-w-button logOut"
+							class="button-component logOut"
 							:text="'Log-out'" 
 							:task="'/Login'"
 							></Button> -->
@@ -142,7 +164,7 @@
 			</div>
 
 			<div class="window" id="wizard">
-				<Wizard class="window window-wizard" />
+				<Wizard class="window window-wizard" @submit="incrementUserIn" />
 			</div>
 
 			<div class="window" id="overview">
@@ -159,7 +181,7 @@
 							<p>Views: {{ post.views }}</p>
 						</li>
 						<p v-for="user in users2">{{ user }}</p>
-						<p v-for="answer in answers">{{ answer  }}</p>
+						<p v-for="answer in answers">{{ answer }}</p>
 					</ul>
 
 				</Overview>
@@ -176,6 +198,8 @@
 	import Wizard from './wizard.vue';
 	import Overview from './overview.vue';
 	import Button from './atom components/button.vue';
+	import axios from 'axios'; // Import Axios
+	import {jsonServerURL,StrapiURL} from '@/axios'; // Import Axios.js
 
 	export default {
 		name:'Profile',
@@ -184,6 +208,66 @@
 			Wizard,
 			Overview,
 			Button
+		},
+		async created(){
+			const response = await StrapiURL.get('users')
+			console.log(response.data);
+			
+		},
+		data() {
+			return {
+				roomData: null, 
+				posts: [], 
+				users:[],
+				answers:[],
+				users2:[],
+				user3:[],
+				userIn: 0,
+
+			}
+		},
+		mounted() {
+			this.fetchStrapiData(); 
+			// this.fetchPosts(); 
+			let userIn = 0;
+		},
+		methods: {
+			async fetchStrapiData() {
+				try {
+					let peep = '9'
+					const [roomResponse, userRespnse, user3Response] = await Promise.all([
+						StrapiURL.get('room'),
+						StrapiURL.get('users'),
+						StrapiURL.get(`users/${peep}`)
+					])
+					
+					this.roomData = roomResponse.data.data;
+					this.users2 = userRespnse.data;
+					this.user3 = user3Response.data;
+					console.log(this.roomData,this.users2);
+					
+				} catch (error) {
+					console.error('Error fetching room data:', error);
+				}
+			},
+			async fetchPosts() {
+				try {
+					let apiKey;
+					const responseU = await axios.get(`http://localhost:3001/users`); 
+					const responseA = await axios.get(`http://localhost:3001/answers`); 
+					// this.posts = response.data.posts;
+					this.users = responseU.data;
+					this.answers = responseA.data;
+
+					console.log(this.posts,this.answers.length);
+					
+				} catch (error) {
+					console.error('Error fetching posts:', error);
+				}
+			},
+			decrementUserIn() {
+				this.userIn = this.userIn - 1; // Increment userIn by 1
+			},
 		}
 	}
 </script>
@@ -293,19 +377,16 @@
 
 
 
-	.buttonBox{
+
+	.start-wizard .buttonBox{
 		--w:45;
 		--p: calc(calc(100 - var(--w))/2);
-		display: flex;
 		flex-direction: column;
-		justify-content: center;
-		gap: 3%;
 		position: absolute;
 		inset-inline-start: calc(var(--p) * 1%);
 		inset-block: 0;
 		width: calc(var(--w) * 1% );
 		height: auto;
-		border-radius: inherit;
 		
 	}
 
@@ -317,45 +398,8 @@
 		}
 	}
 
-	.start-w-button{
-		width: 100%;
-		height: auto;
-		border-radius: inherit;
-		display: grid;
-		place-content: center;
-		/* background-color: bisque; */
-		/* font-size: 3rem; */
-		padding: 3%;
-		
-	}
 
 
-	/* /////////////// */
-	/* wizard section */
-	/* ////////////// */
-
-	#wizard{
-		padding-top: 11%;
-		scroll-snap-align:start ;
-		border-radius: clamp(0.5rem, 2.5vw, 50px);
-		position: relative;
-		margin-bottom: 3% ;
-		/* translate: 0 -71vh; */
-	}
-
-	#wizard:deep(.WD){
-		outline: 1px solid;
-		padding-top: 5%;
-	}
-
-	#wizard:is(:target){
-		margin-top: -70vh;
-	}
-
-	#overview{
-		/* outline: solid red; */
-		padding-top: calc(var(--hf-height) + 3rem);
-	}
 	
 
 
@@ -363,17 +407,14 @@
 	/* styling when user is signed in  */
 	/* /////////////////////////////// */
 
-	.window-package,.info-config{
+	.info-config{
 		border: 1px solid;
 		align-items: initial;
 		flex-direction: column;
 		position: relative;
 		/* width: 70cqw; */
 		transition: .5s ease;
-		background-color: var(--D-light-bk);
 		overflow: hidden;
-
-
 	}
 
 
@@ -383,27 +424,23 @@
 
 
 	:deep(.window-package){
-
-		h1{
-			font-size: clamp(1rem, -3.8rem + 8vw, 3cqi);
-
-		}
+		padding-inline: .1cqw;
+		h1{font-size: clamp(1rem, -3.8rem + 8vw, 3cqi);}
 	}
 
+	
 	.info-config ul{
 		width: 100%;
 		height: auto;
-		margin-top: 3%;
-
+		/* margin-top: 3%; */
 		display: flex;
 		flex-wrap: wrap;
 		align-content: flex-start;
-		gap: 2%;
-		/* overflow: hidden; */
+		gap: .1cqi;
 		text-wrap-mode:wrap;
 		text-wrap-style: balance;
 		text-overflow: ellipsis;
-
+		
 		
 	}
 
@@ -417,25 +454,34 @@
 		height: fit-content;
 		min-width: 1rem;
 		width: fit-content;
-
+		
 		font-size: clamp(1rem, -3.8rem + 8vw, 1cqi);
 		text-wrap:balance;
 		text-wrap:auto;		
 	}
+	
+		
+	.profile-c:has(article + aside) {
+		border: none;
+		display: flex;
+		flex-direction:row;
 
-	.info-config li p::before{
-		content: '';
-		color: var(--D-mid-bk);
-		margin-right: 8px;
+		& > :nth-child(n+3){
+			border: 1px solid;
+			padding: 2%;
+			border-radius: inherit ;
+			background-color: var(--D-light-bk);
+
+		}
 	}
 
 	.info-config article{
 		display: grid;
-		height: 80cqh;
 		grid-template-columns: repeat(auto-fit, minmax(calc(20cqw), 1fr));
-		column-gap: 6%;
+		column-gap: 5%;
+		width: 100%;
 	}
-
+	
 	.info-config article h2{
 		font-size: clamp(1rem, -3.8rem + 8vw, 1.5cqi);
 		font-weight: 700;
@@ -467,6 +513,92 @@
 
 	.info-config article li p::before{
 		content: '';
+	}
+
+
+	/* aside */
+	.info-config aside {
+		position: relative;
+		width: 32%;
+		margin-left: 2%;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.info-config aside .buttonBox{
+		--w:100;
+		--h:100;
+		position: relative;
+		justify-content: flex-end;
+	}
+
+	.info-config aside .button-component{
+		font-size: clamp(1rem, -3.8rem + 8vw, 1.5cqi);
+	}
+
+	.info-config aside .log-out {
+		background-color: rgb(94, 33, 33);
+		/* color: rgba(255, 0, 0, 0.637); */
+	}
+
+	/* /////////////// */
+	/* wizard section */
+	/* ////////////// */
+
+	#wizard{
+		padding-top: 11%;
+		scroll-snap-align:start ;
+		border-radius: clamp(0.5rem, 2.5vw, 50px);
+		position: relative;
+		margin-bottom: 3% ;
+		/* translate: 0 -71vh; */
+	}
+
+	#wizard:deep(.WD){
+		outline: 1px solid;
+		padding-top: 5%;
+	}
+
+	#wizard:is(:target){
+		margin-top: -70vh;
+	}
+
+	/* /////////////// */
+	/* overview section */
+	/* ////////////// */
+
+	#overview{
+		/* outline: solid red; */
+		padding-top: calc(var(--hf-height) + 3rem);
+	}
+
+
+	/* button box */
+	.buttonBox{
+		--w:100;
+		--h:100;
+		--p: calc(calc(100 - var(--w))/2);
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		border-radius: inherit;
+		gap: 3%;
+		width: calc(var(--w) * 1% );
+		height: calc(var(--h) * 1%);
+		/* position: absolute; */
+
+
+	}
+
+	.button-component{
+		width: 100%;
+		height: auto;
+		border-radius: inherit;
+		display: grid;
+		place-content: center;
+		padding: 3%;
+		
 	}
 
 
