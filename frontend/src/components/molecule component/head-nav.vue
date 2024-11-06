@@ -58,7 +58,7 @@ export default {
 			}
 		},
 		checkIfProfilePage() {
-			this.isProfilePage = this.$route.path.includes("/profile ");
+			this.isProfilePage = this.$route.path.includes("/profile");
 		},
 	},
 };

@@ -6,7 +6,7 @@
     <router-view class="content" />
   
     
-    <footer class="footr" />
+    <Footer class="footr" />
 
   </div>
     
@@ -14,14 +14,14 @@
 
 <script>
     import Header from '@/components/molecule component/head-nav.vue'
-    import footr from '@/components/molecule component/footr.vue'
+    import Footer from '@/components/molecule component/footer.vue'
     
       export default {
         name: 'app',
     
         components: {
           Header,
-          footr,
+          Footer,
         }
       }
     
