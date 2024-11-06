@@ -1,11 +1,10 @@
 {
   "scripts": {
     "dev:frontend": "npm run dev --prefix frontend -- --open",
-
     "dev:backend": "npm run develop --prefix backend -- --open",
     "dev:json-server": "json-server test-backend/db.json --port 3001 -- --open",
-    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\" \"npm run dev:json-server\""
-
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\" \"npm run dev:json-server\"",
+    "build": "npm run build --prefix frontend && npm run build --prefix backend"
   },
   "dependencies": {
     "axios": "^1.7.7",
