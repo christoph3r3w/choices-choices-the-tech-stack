@@ -6,12 +6,15 @@ export interface ApiRoomRoom extends Struct.SingleTypeSchema {
     singularName: 'room';
     pluralName: 'rooms';
     displayName: 'room';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     cool: Schema.Attribute.Text;
+    age: Schema.Attribute.Integer;
+    mediaTest: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -465,7 +468,7 @@ export interface PluginUsersPermissionsUser
     displayName: 'User';
   };
   options: {
-    draftAndPublish: false;
+    draftAndPublish: true;
   };
   attributes: {
     username: Schema.Attribute.String &
